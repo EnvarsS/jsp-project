@@ -4,9 +4,12 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import org.envycorp.model.Ending_Iterators.EndingIterator;
+import org.envycorp.model.Factory.UserEndingFactory;
 import org.envycorp.model.plot_Iterators.BusPlotIterator;
 import org.envycorp.model.plot_Iterators.SceneIterator;
 import org.envycorp.model.plot_Iterators.WalkingPlotIterator;
+import org.envycorp.util.EndingGenerator;
 import org.envycorp.util.SceneLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +43,11 @@ public class StartServlet extends HttpServlet {
 
         session.setAttribute("optionalScene", plotIterator.getCurrentScene());
         session.setAttribute("plotIterator", plotIterator);
+
+        EndingIterator endingIterator = UserEndingFactory.createEndingIterator(plotIterator);
+        EndingGenerator generator = new EndingGenerator(endingIterator);
+
+        session.setAttribute("EndingGenerator", generator);
 
         resp.sendRedirect("/game");
     }

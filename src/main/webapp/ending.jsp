@@ -15,8 +15,12 @@
     <script src="${pageContext.request.contextPath}/js/game-scripts.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>${userPoints}</h1>
-    </div>
+<div class="container">
+    <div id="sceneText" class="text-box">${currentScene.text}</div>
+
+    <form method="post" class="choices-form">
+        <button type="submit" name="choice" class="choice-button" >Restart</button>
+    </form>
+</div>
 </body>
 </html>
