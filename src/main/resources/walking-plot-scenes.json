@@ -19,11 +19,11 @@
     "choices": [
       {
         "text": "Пройти мовчки повз",
-        "positive": true
+        "positive": false
       },
       {
         "text": "Кивнути їм на привітання",
-        "positive": false
+        "positive": true
       }
     ]
   },
