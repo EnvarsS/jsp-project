@@ -34,7 +34,7 @@ public class SceneLoader {
         return loadScenes(firstSceneFile).getFirst();
     }
 
-    public ArrayList<Scene> getAllPlotScenes(String scenesFilePath){
+    public ArrayList<Scene> getAllScenes(String scenesFilePath){
         return loadScenes(scenesFilePath);
     }
 
@@ -56,6 +56,4 @@ public class SceneLoader {
 
         return scenes;
     }
-
-
 }
