@@ -6,9 +6,9 @@ import org.envycorp.util.SceneLoader;
 import java.util.ArrayList;
 
 public class BusPlotIterator extends PlotIterator {
-    private final String scenesFilePath = "/bus-plot-scenes";
+    private final String scenesFilePath = "/bus-plot-scenes.json";
     @Override
-    public ArrayList<Scene> getScenes() {
+    public ArrayList<Scene> loadScenes() {
         return SceneLoader.getInstance().getAllPlotScenes(scenesFilePath);
     }
 }

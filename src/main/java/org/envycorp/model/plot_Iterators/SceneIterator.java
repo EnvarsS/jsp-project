@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public interface SceneIterator {
-    Optional<Scene> nextScene();
+    void nextScene();
 
     boolean hasNext();
 
-    ArrayList<Scene> getScenes();
+    ArrayList<Scene> loadScenes();
+
+    Optional<Scene> getCurrentScene();
 }

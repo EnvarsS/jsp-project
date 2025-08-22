@@ -9,14 +9,16 @@ public abstract class PlotIterator implements SceneIterator {
 
     private Integer index = 0;
     private List<Scene> scenes;
+    private Optional<Scene> currentScene;
 
     @Override
-    public Optional<Scene> nextScene() {
-        if(!hasNext())
-            return Optional.empty();
-
+    public void nextScene() {
+        if(!hasNext()) {
+            currentScene = Optional.empty();
+            return;
+        }
         index++;
-        return Optional.of(scenes.get(index));
+        currentScene = Optional.of(scenes.get(index));
     }
 
     @Override
@@ -25,6 +27,12 @@ public abstract class PlotIterator implements SceneIterator {
     }
 
     public PlotIterator(){
-        scenes = getScenes();
+        scenes = loadScenes();
+        currentScene = Optional.of(scenes.get(index));
+    }
+
+    @Override
+    public Optional<Scene> getCurrentScene() {
+        return currentScene;
     }
 }
