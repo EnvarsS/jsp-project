@@ -30,7 +30,7 @@ public class SceneLoader {
     }
 
     public Scene getFirstScene() {
-        String firstSceneFile = "/first_scene.json";
+        String firstSceneFile = "/first-scene.json";
         return loadScenes(firstSceneFile).getFirst();
     }
 

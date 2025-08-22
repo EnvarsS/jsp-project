@@ -1,6 +1,7 @@
 package org.envycorp.model.Scene_Elements;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Scene {
     private String index;
@@ -28,5 +29,19 @@ public class Scene {
         return choices;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Scene scene = (Scene) o;
+        return index.equals(scene.index) &&
+               text.equals(scene.text) &&
+               choices.equals(scene.choices);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(index, text, choices);
+    }
 
 }
