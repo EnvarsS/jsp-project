@@ -14,7 +14,7 @@
 
         <form method="post" class="choices-form">
             <c:forEach var="choice" items="${currentScene.choices}">
-                    <button type="submit" name="choice" class="choice-button" value ="${choice.isPositive()}">${choice.text}</button>
+                <button type="submit" name="isBusPlot" class="choice-button" value ="${choice.isPositive()}">${choice.text}</button>
             </c:forEach>
         </form>
     </div>
