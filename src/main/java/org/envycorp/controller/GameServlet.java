@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.envycorp.model.Scene_Elements.Scene;
 import org.envycorp.model.plot_Iterators.SceneIterator;
+import org.envycorp.service.GameService;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -34,17 +35,10 @@ public class GameServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        boolean isPositiveAnswer = req.getParameter("choice").equals("true");
-        if (isPositiveAnswer) {
-            int userPoints = (int) session.getAttribute("userPoints");
-            userPoints++;
-            session.setAttribute("userPoints", userPoints);
-        }
+        GameService gameService = new GameService();
 
-        SceneIterator plotIterator = (SceneIterator) session.getAttribute("plotIterator");
-        plotIterator.nextScene();
-        session.setAttribute("plotIterator", plotIterator);
+        gameService.calculateScore(req);
+        gameService.delegateNextScene(req);
 
         resp.sendRedirect("/game");
     }
