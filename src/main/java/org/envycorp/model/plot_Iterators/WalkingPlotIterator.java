@@ -1,5 +1,7 @@
 package org.envycorp.model.plot_Iterators;
 
+import org.envycorp.model.Ending_Iterators.EndingIterator;
+import org.envycorp.model.Ending_Iterators.WalkingEndingIterator;
 import org.envycorp.model.Scene_Elements.Scene;
 import org.envycorp.util.SceneLoader;
 
@@ -10,5 +12,10 @@ public class WalkingPlotIterator extends PlotIterator {
     @Override
     public ArrayList<Scene> loadScenes() {
         return SceneLoader.getInstance().getAllScenes(scenesFilePath);
+    }
+
+    @Override
+    public EndingIterator createEndingIterator() {
+        return new WalkingEndingIterator();
     }
 }

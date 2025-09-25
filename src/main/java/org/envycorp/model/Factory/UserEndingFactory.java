@@ -9,11 +9,6 @@ import org.envycorp.model.plot_Iterators.WalkingPlotIterator;
 
 public class UserEndingFactory {
     public static EndingIterator createEndingIterator(SceneIterator sceneIterator) {
-        if (sceneIterator instanceof WalkingPlotIterator) {
-            return new WalkingEndingIterator();
-        } else if (sceneIterator instanceof BusPlotIterator) {
-            return new BusEndingIterator();
-        }
-        return null;
+        return sceneIterator.createEndingIterator();
     }
 }
