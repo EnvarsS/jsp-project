@@ -16,17 +16,8 @@ public class SceneLoader {
     private static final Logger LOGGER = LoggerFactory.getLogger(SceneLoader.class);
     private List<Scene> scenes;
 
-    private static SceneLoader instance;
+    public SceneLoader() {
 
-    private SceneLoader() {
-
-    }
-
-    public static SceneLoader getInstance() {
-        if(instance == null) {
-            instance = new SceneLoader();
-        }
-        return instance;
     }
 
     public Scene getFirstScene() {

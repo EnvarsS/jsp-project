@@ -7,9 +7,11 @@ import java.util.ArrayList;
 
 public abstract class EndingIterator {
     private ArrayList<Scene> scenes;
+    private final SceneLoader sceneLoader;
 
     public EndingIterator(String filePath){
-        scenes = SceneLoader.getInstance().getAllScenes(filePath);
+        this.sceneLoader = new SceneLoader();
+        scenes = sceneLoader.getAllScenes(filePath);
     }
 
     public Scene getGoodEnding(){
