@@ -14,11 +14,8 @@ import java.util.List;
 
 public class SceneLoader {
     private static final Logger LOGGER = LoggerFactory.getLogger(SceneLoader.class);
-    private List<Scene> scenes;
 
-    public SceneLoader() {
-
-    }
+    public SceneLoader() { }
 
     public Scene getFirstScene() {
         String firstSceneFile = "/first-scene.json";
