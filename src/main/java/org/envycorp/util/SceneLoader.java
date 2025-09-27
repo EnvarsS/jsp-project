@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 public class SceneLoader {
     private static final Logger LOGGER = LoggerFactory.getLogger(SceneLoader.class);
