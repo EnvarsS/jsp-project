@@ -6,12 +6,11 @@ public class Choice {
     private String text;
     private boolean positive;
 
+    public Choice() { }
+
     public Choice(String text, boolean positive) {
         this.text = text;
         this.positive = positive;
-    }
-
-    public Choice() {
     }
 
     public String getText() {

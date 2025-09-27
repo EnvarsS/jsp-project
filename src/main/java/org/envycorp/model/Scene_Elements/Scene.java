@@ -8,13 +8,12 @@ public class Scene {
     private String text;
     private List<Choice> choices;
 
+    public Scene() { }
+
     public Scene(String index, String text, List<Choice> choices) {
         this.index = index;
         this.text = text;
         this.choices = choices;
-    }
-
-    public Scene() {
     }
 
     public String getIndex() {
