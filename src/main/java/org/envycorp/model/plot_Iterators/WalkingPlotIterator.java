@@ -2,16 +2,12 @@ package org.envycorp.model.plot_Iterators;
 
 import org.envycorp.model.Ending_Iterators.EndingIterator;
 import org.envycorp.model.Ending_Iterators.WalkingEndingIterator;
-import org.envycorp.model.Scene_Elements.Scene;
-import org.envycorp.util.SceneLoader;
-
-import java.util.ArrayList;
 
 public class WalkingPlotIterator extends PlotIterator {
-    private static final String scenesFilePath = "/walking-plot-scenes.json";
+    private static final String SCENES_FILE_PATH = "/walking-plot-scenes.json";
     @Override
     protected String getScenesFilePath() {
-        return scenesFilePath;
+        return SCENES_FILE_PATH;
     }
 
     @Override
