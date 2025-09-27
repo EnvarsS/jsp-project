@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.envycorp.model.Scene_Elements.Scene;
+import org.envycorp.service.EndingService;
 import org.envycorp.util.EndingGenerator;
 
 import java.io.IOException;
@@ -16,17 +17,18 @@ public class EndingServlet extends HttpServlet {
     private static final String INDEX_PAGE = "/index.jsp";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
+        EndingService endingService = new EndingService();
 
+        HttpSession session = req.getSession();
         EndingGenerator generator = (EndingGenerator) session.getAttribute("EndingGenerator");
-        Scene endingScene = generator.getEndingScene((int) session.getAttribute("userPoints"));
-        session.setAttribute("currentScene", endingScene);
+
+        endingService.generateEndingScene(session, generator);
 
         req.getRequestDispatcher(ENDING_PAGE).forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.sendRedirect(INDEX_PAGE);
     }
 }

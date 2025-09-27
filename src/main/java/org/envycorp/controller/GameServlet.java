@@ -15,6 +15,9 @@ import java.util.Optional;
 
 @WebServlet(name = "GameServlet", value = "/game")
 public class GameServlet extends HttpServlet {
+    private static final String GAME_PAGE = "/game.jsp";
+    private static final String GAME_URL = "/game";
+    private static final String ENDING_URL = "/ending";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,7 +25,7 @@ public class GameServlet extends HttpServlet {
         Optional<Scene> nextScene = ((SceneIterator) session.getAttribute("plotIterator")).getCurrentScene();
 
         if (nextScene.isEmpty()) {
-            resp.sendRedirect("/ending");
+            resp.sendRedirect(ENDING_URL);
             return;
         }
         else {
@@ -30,16 +33,19 @@ public class GameServlet extends HttpServlet {
             session.setAttribute("currentScene", currentScene);
         }
 
-        req.getRequestDispatcher("/game.jsp").forward(req, resp);
+        req.getRequestDispatcher(GAME_PAGE).forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         GameService gameService = new GameService();
 
-        gameService.calculateScore(req);
-        gameService.delegateNextScene(req);
+        HttpSession session = req.getSession();
+        boolean isPositiveAnswer = req.getParameter("choice").equalsIgnoreCase("true");
 
-        resp.sendRedirect("/game");
+        gameService.calculateScore(session, isPositiveAnswer);
+        gameService.delegateNextScene(session);
+
+        resp.sendRedirect(GAME_URL);
     }
 }
