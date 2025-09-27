@@ -1,0 +1,64 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #0b0b2b, #1a1a3d);
+    color: #f0f0f0;
+    overflow-y: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+}
+.text-box {
+    text-align: left;
+    width: 90%;
+    min-height: 30%;
+    height: auto;
+    margin: 30px auto;
+    padding: 20px;
+    color: #ffd700;
+    font-size: 2em;
+}
+
+
+.choices-form {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center; /* Center buttons horizontally */
+    margin: 0 auto; /* Optional: center the form itself if needed */
+}
+
+.choice-button {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 14px 30px;
+    background-color: #4444aa;
+    color: #fff;
+    border: none;
+    height: auto;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Hover and active effects */
+.choice-button:hover {
+    background-color: #6666ff;
+    transform: scale(1.07);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
+}
+
+.choice-button:active {
+    transform: scale(0.98);
+    background-color: #5555dd;
+}
