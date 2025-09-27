@@ -8,13 +8,13 @@ import org.envycorp.model.plot_Iterators.BusPlotIterator;
 import org.envycorp.model.plot_Iterators.SceneIterator;
 import org.envycorp.model.plot_Iterators.WalkingPlotIterator;
 import org.envycorp.util.EndingGenerator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class StartService {
-    public void startGame(HttpServletRequest req){
-        HttpSession session = req.getSession(true);
+    private static final Logger LOGGER = LoggerFactory.getLogger(StartService.class);
 
-        boolean isBusPlot = req.getParameter("isBusPlot").equals("true");
-
+    public void startGame(HttpSession session, boolean isBusPlot) {
         SceneIterator plotIterator;
 
         if (isBusPlot) {
@@ -30,6 +30,8 @@ public class StartService {
         EndingGenerator generator = new EndingGenerator(endingIterator);
 
         session.setAttribute("EndingGenerator", generator);
+
+        LOGGER.info("Game started with {} plot.", isBusPlot ? "Bus" : "Walking");
 
     }
 }
